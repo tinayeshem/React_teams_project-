@@ -4,16 +4,27 @@ import viteLogo from '/vite.svg'
 
 import Card from './components/Card.jsx'
 
-function App() {
+
+        
   
 
-  return (
-    
 
-    <Card></Card>
-      
-    
-  );
-}
+function App() { 
+
+  
+
+      return (
+        
+        <div style={myStyle}>
+
+          <Card></Card>
+
+        </div>       
+          
+        
+      );
+
+  }
+
 
 export default App
