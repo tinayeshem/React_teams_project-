@@ -1,24 +1,20 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-
-import Card from './components/Card.jsx'
+import './App.css'
+import Card from './components/Card'
 
 
         
   
 
 
-function App() { 
-
-  
+function App() {  
 
       return (
         
-        <div style={myStyle}>
-
-          <Card></Card>
-
+        <div >
+          <Card/>
         </div>       
           
         
