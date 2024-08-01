@@ -6,6 +6,7 @@
     overflow: hidden;
     font-family: Arial, sans-serif;
     margin: 16px auto;
+    background-color: white;
 }
 
 .card:hover {
@@ -22,6 +23,7 @@
 .card-container {
     padding: 16px;
     text-align: center;
+    background-color: white;
 }
 
 .card-container h4 {
