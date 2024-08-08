@@ -5,9 +5,7 @@ import './App.css'
 import Card from './components/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar'
-
-
-        
+import { DropDown } from './components/DropDown'       
   
 
 
@@ -17,6 +15,7 @@ function App() {
       
             <>
             <Navbar/> 
+            <DropDown/>
             <div className="container">
                <div className="row">
                   <div className="col-sm">
