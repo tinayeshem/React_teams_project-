@@ -1,0 +1,9 @@
+.react-collapse-content {
+    /* Custom styles for the collapsed content */
+    background-color: black;
+}
+
+.react-collapse-content.react-collapse-content-open {
+    /* Custom styles for the expanded content */
+    background-color: black;
+}
