@@ -13,22 +13,20 @@ import {
     Route,
 } from "react-router-dom";
 import Home from './pages/Home'
-import Team from './pages/Teams'
+import Teams from './pages/Teams'
 
   
 
 
 function App() {  
 
-      return (
+      return (      
       
-      <Router>
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/Teams" element={<Teams />} />
             </Routes>
-      </Router>   
-        
+               
       );
 
   }

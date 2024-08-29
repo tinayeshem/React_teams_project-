@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/styles/Card.css';
 
-function Card() {
+function Card(props) {
     return (
         <div className="card">
             <img 
@@ -10,8 +10,8 @@ function Card() {
                 className="card-img"
             />
             <div className="card-container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
+                <h4><b>{props.name}</b></h4>
+                <p>{props.spec}</p>
             </div>
         </div>
     );
