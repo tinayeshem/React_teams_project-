@@ -1,64 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from '../components/Card';
 import '../assets/styles/Home.css';
-
-const names = [
-  { name: "John", Speciality: "Nodejs Dev" },
-  { name: "Susan", Speciality: "ReactDev" },
-  { name: "Bill", Speciality: "Java Dev" },
-  { name: "Jane", Speciality: "C++ Dev" },
-  { name: "Aulyn", Speciality: "Laravel Dev" },
-  { name: "David", Speciality: "Spring Dev" },
-  { name: "Loveness", Speciality: "Nodejs Dev" },
-  { name: "Moses", Speciality: "Python Dev" },
-  { name: "Justice", Speciality: "Java Dev" },
-  { name: "Ian", Speciality: "Systems Dev" },
-  { name: "Youry", Speciality: "Nodejs Dev" },
-   { name: "James", Speciality: "Nodejs Dev" }
-];
+import { DropDown } from '../components/DropDown';
+import { useLocation } from 'react-router-dom';
+import Teams from './Teams';  // Import Teams component
+import { MyContext } from '../components/MyContext';  // Import the context
 
 function Home() {
-  const num_Rows = 4;
-  const num_Columns = 3;
+  const coders = [
+    { name: "John", Speciality: "Nodejs Dev", Team: "None" },
+    { name: "Susan", Speciality: "ReactDev", Team: "None" },
+    { name: "Bill", Speciality: "Java Dev", Team: "None" },
+    { name: "Jane", Speciality: "C++ Dev", Team: "None" },
+    { name: "Aulyn", Speciality: "Laravel Dev", Team: "None" },
+    { name: "David", Speciality: "Spring Dev", Team: "None" },
+    { name: "Loveness", Speciality: "Nodejs Dev", Team: "None" },
+    { name: "Moses", Speciality: "Python Dev", Team: "None" },
+    { name: "Justice", Speciality: "Java Dev", Team: "None" },
+    { name: "Ian", Speciality: "Systems Dev", Team: "None" },
+    { name: "Youry", Speciality: "Nodejs Dev", Team: "None" },
+    { name: "James", Speciality: "Nodejs Dev", Team: "None" }
+  ];
 
-  // Create rows and columns dynamically inside the component function
-  const rows = [];
-  let count = 0;
+  const [dev, setDevs] = useState(() => {
+    const storedDevs = localStorage.getItem('devs');    
+    return storedDevs ? JSON.parse(storedDevs) : coders;
+  });
+
+  const location = useLocation();
+  const { option } = location.state || {};
+
+  const handleTeamChange = (index) => {
+    if (!option) return; // Only update if option exists
+    setDevs((prevDevs) => {
+      const updatedDevs = prevDevs.map((dev, idx) =>
+        idx === index ? { ...dev, Team: option } : dev      );
+      localStorage.setItem('devs', JSON.stringify(updatedDevs));
+      return updatedDevs;
+    });
+  };
 
   
 
-  for (let i = 0; i < num_Rows; i++) {
-    const columns = [];
-
-    for (let j = 0; j < num_Columns; j++) {
-      if (count < names.length) {
-        columns.push(
-          <div className="col-sm" key={`col-${i}-${j}`}>
-            <Card name={names[count].name} spec={names[count].Speciality} />
-          </div>
-        );
-        count++;
-      }
-    }
-
-    rows.push(
-      <div className="row" key={`row-${i}`}>
-        {columns}
-      </div>
-    );
-  }
-
   return (
-    <>
+    <MyContext.Provider value={dev}>
       <div className="page">
         <Navbar />
+        <DropDown />
         <div className="container">
-          {rows}
+          <div className='row'>
+            {dev.map((card, index) => (
+              <div className='col-4' onClick={() => handleTeamChange(index)} key={index}>
+                <Card name={card.name} spec={card.Speciality} team={card.Team} />
+              </div>
+            ))}
+          </div>
         </div>
+      
       </div>
-    </>
+    </MyContext.Provider>
   );
 }
 

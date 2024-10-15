@@ -2,11 +2,19 @@ import React from 'react'
 import Collapsible from 'react-collapsible';
 import '../assets/styles/Collapse.css'
 
-function CollapseList() {
+function CollapseList(props ) {
+
+
+
+
   return (
-    <Collapsible   trigger="Click to toggle">
-      <p className='text'>This is the content of the collapsible component.</p>
+
+    <div className='my-team'>
+    <Collapsible   trigger={props.teamName}>
+      <pre>{props.teamMembers}</pre>       
     </Collapsible>
+    </div>
+    
   );
 }
 

@@ -3,15 +3,16 @@ import '../assets/styles/Card.css';
 
 function Card(props) {
     return (
-        <div className="card">
+        <div className="card" onClick={props.onClick} style={{ cursor: 'pointer' }}  >
             <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                src= 'https://img.icons8.com/?size=100&id=2yC9SZKcXDdX&format=png&color=000000'
                 alt="Avatar" 
                 className="card-img"
             />
             <div className="card-container">
                 <h4><b>{props.name}</b></h4>
                 <p>{props.spec}</p>
+                <p>{props.team}</p>
             </div>
         </div>
     );

@@ -1,0 +1,13 @@
+.my-dropdown{
+   width: 100px;
+   align-items: center ;
+   padding: 30px 20px 20px 20px;
+   margin-left: 600px;
+}
+
+#dropdown-basic{
+    width: 200px;
+    background-color: black;
+
+}
+
